@@ -4,7 +4,7 @@ node{
 		echo "I am now running ${env.BUILD_ID} in ${env.JENKINS_URL}"
 		}
 	stage('Test'){
-		echo"Testing..."
+		echo"It is Testing..."
 		}
 	stage('Deploy'){
 		echo"It is Deploying..."
