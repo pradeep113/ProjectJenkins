@@ -8,6 +8,8 @@ node {
     }
 
 GITHUB_TOKEN=credentials('github-token')
+DOCKERHUB_TOKEN=credentials('dockerhub_token')
+DOCKER_USERID="pradeep113"
 IMAGE_NAME="ubuntu/new"
 IMAGE_VERSION="${BUILD_NUMBER}"
 
@@ -19,13 +21,7 @@ IMAGE_VERSION="${BUILD_NUMBER}"
           app = docker.build("${IMAGE_NAME}:${IMAGE_VERSION}")
     }
 
-    stage('Test image') {
-        /* Ideally, we would run a test framework against our image.
-         * For this example, we're using a Volkswagen-type approach ;-) */
-          app = docker.push("${IMAGE_NAME}:${IMAGE_VERSION}")
-        app.inside {
-            sh 'echo "Tests passed"'
-        }
+    stage('LOGIN-DOCKERHUB') {
+	  app = docker login -u ${DOCKER_USERID} -p ${DOCKER_TOKEN} 
     }
-
 }
