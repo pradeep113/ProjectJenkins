@@ -22,7 +22,7 @@ IMAGE_VERSION="${BUILD_NUMBER}"
     }
 
     stage('DOCKERHUB-PUSH') {
-	docker.withRegistry('https://hub.docker.com/repository/docker/pradeep113/firstrepo','${DOCKERHUB_TOKEN}'){
+	docker.withRegistry('https://hub.docker.com/repository/docker/pradeep113/firstrepo','dockerhub_token'){
     	app.push()
 	}
     }
