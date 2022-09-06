@@ -16,7 +16,7 @@ IMAGE_VERSION="${BUILD_NUMBER}"
          * docker build on the command line */
 
         /*app = docker.build("ubuntu/new:env.${BUILD_NUMBER}")*/
-          app = docker.build("${IMAGE_NAME}:${IMAGE_VERSION})
+          app = docker.build("${IMAGE_NAME}:${IMAGE_VERSION}")
     }
 
     stage('Test image') {
