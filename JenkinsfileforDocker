@@ -10,7 +10,7 @@ node {
 GITHUB_TOKEN=credentials('github-token')
 DOCKERHUB_TOKEN=credentials('dockerhub_token')
 DOCKER_USERID="pradeep113"
-IMAGE_NAME="ubuntu/new"
+IMAGE_NAME="ubuntu-new"
 IMAGE_VERSION="${BUILD_NUMBER}"
 
     stage('Build image') {
