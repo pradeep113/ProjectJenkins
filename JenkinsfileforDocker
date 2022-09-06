@@ -1,5 +1,4 @@
 node {
-    def app
 
     stage('Clone repository') {
         /* Let's make sure we have the repository cloned to our workspace */
@@ -18,12 +17,12 @@ IMAGE_VERSION="${BUILD_NUMBER}"
          * docker build on the command line */
 
         /*app = docker.build("ubuntu/new:env.${BUILD_NUMBER}")*/
-          app = docker.build("${IMAGE_NAME}:${IMAGE_VERSION}")
+          image = docker.build("${IMAGE_NAME}:${IMAGE_VERSION}")
     }
 
     stage('DOCKERHUB-PUSH') {
-	docker.withRegistry('https://hub.docker.com/repository/docker/pradeep113/firstrepo','dockerhub_token1'){
-    	app.push()
+	docker.withRegistry('','dockerhub_token1'){
+    	image.push()
 	}
     }
 }
