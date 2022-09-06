@@ -18,12 +18,11 @@ IMAGE_VERSION="${BUILD_NUMBER}"
 
         /*app = docker.build("ubuntu/new:env.${BUILD_NUMBER}")*/
           image = docker.build("${IMAGE_NAME}:${IMAGE_VERSION}")
-	  tag =  docker.tag("${IMAGE_NAME}:${IMAGE_VERSION},fromjenkins:tagnew")
     }
 
     stage('DOCKERHUB-PUSH') {
 	docker.withRegistry('','dockerhub_token1'){
-    	tag.push()
+    	image.push()
 	}
     }
 }
