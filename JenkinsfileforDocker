@@ -1,8 +1,6 @@
 node {
 
     stage('Clone repository') {
-        /* Let's make sure we have the repository cloned to our workspace */
-
         checkout scm
     }
 
@@ -13,10 +11,6 @@ IMAGE_NAME="ubuntu-new"
 IMAGE_VERSION="${BUILD_NUMBER}"
 
     stage('Build image') {
-        /* This builds the actual image; synonymous to
-         * docker build on the command line */
-
-        /*app = docker.build("ubuntu/new:env.${BUILD_NUMBER}")*/
           image = docker.build("pradeep113/${IMAGE_NAME}:${IMAGE_VERSION}")
     }
 
