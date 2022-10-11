@@ -21,7 +21,6 @@ IMAGE_VERSION="${BUILD_NUMBER}"
     }
 
     stage('DOCKERHUB-PUSH') {
-	/*docker.withRegistry('','dockerhub_token1')*/
 	withDockerRegistry([credentiaID: "dockerhub_token", url:""]){
     	image.push()
 	}
