@@ -1,0 +1,5 @@
+version: "3"
+services:
+    ubuntu:
+       image: pradeep113/ubuntu-new:35
+       container_name: Myubuntucontainer
