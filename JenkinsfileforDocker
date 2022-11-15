@@ -19,4 +19,7 @@ IMAGE_VERSION="${BUILD_NUMBER}"
     	image.push()
 	}
     }
+    stage('Deploy') {
+        sh 'docker-compose -f ${WORKSPACE}/docker-compose.yml up -d'
+	}
 }
