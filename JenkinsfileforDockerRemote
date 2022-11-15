@@ -21,7 +21,7 @@ IMAGE_VERSION="${BUILD_NUMBER}"
 	}
     }
     stage('Deploy') {
-        sh 'scp ${WORKSPACE}/docker-compose.yml ubuntu@192.168.64.3:.'
+        sh 'scp ${WORKSPACE}/docker-compose.yml ${WORKSPACE}/.env ubuntu@192.168.64.3:.'
         sh 'ssh ubuntu@192.168.64.3 "sudo docker-compose up -d"'
 	}
     stage('DeleteImage') {
