@@ -2,4 +2,4 @@ version: "3"
 services:
     ubuntu:
        image: pradeep113/ubuntu-new:${TAG}
-       container_name: Myubuntucontainer
+       container_name: Myubuntucontainer_${TAG}
