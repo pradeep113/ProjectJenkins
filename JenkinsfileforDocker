@@ -24,6 +24,6 @@ IMAGE_VERSION="${BUILD_NUMBER}"
         sh 'docker-compose -f ${WORKSPACE}/docker-compose.yml up -d'
 	}
     stage('DeleteImage') {
-        sh 'docker rmi -f pradeep113/${IMAGE_NAME}:${IMAGE_VERSION}'
+        sh 'docker rmi -f "pradeep113/${IMAGE_NAME}:${IMAGE_VERSION}"'
 	}
 }
