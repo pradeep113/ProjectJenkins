@@ -21,7 +21,7 @@ IMAGE_VERSION="${BUILD_NUMBER}"
 	}
     }
     stage('Deploy') {
-        sh 'scp ${WORKSPACE}/docker-compose.yml ubuntu@192.168.64.3'
+        sh 'scp ${WORKSPACE}/docker-compose.yml ubuntu@192.168.64.3:.'
 	}
     stage('DeleteImage') {
         sh "docker rmi -f pradeep113/${IMAGE_NAME}:${IMAGE_VERSION}"
