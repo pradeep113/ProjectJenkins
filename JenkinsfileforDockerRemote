@@ -1,0 +1,29 @@
+node {
+
+GITHUB_TOKEN=credentials('github-token')
+DOCKERHUB_TOKEN=credentials('dockerhub_token')
+DOCKER_USERID="pradeep113"
+IMAGE_NAME="ubuntu-new"
+IMAGE_VERSION="${BUILD_NUMBER}"
+
+    stage('Clone repository') {
+        checkout scm
+	sh "echo TAG=${IMAGE_VERSION} > ${WORKSPACE}/.env"
+    }
+    
+    stage('Build image') {
+          image = docker.build("pradeep113/${IMAGE_NAME}:${IMAGE_VERSION}")
+    }
+
+    stage('DOCKERHUB-PUSH') {
+	withDockerRegistry([credentiaID: "dockerhub_token", url:""]){
+    	image.push()
+	}
+    }
+    stage('Deploy') {
+        sh 'scp ${WORKSPACE}/docker-compose.yml ubuntu@192.168.64.3'
+	}
+    stage('DeleteImage') {
+        sh "docker rmi -f pradeep113/${IMAGE_NAME}:${IMAGE_VERSION}"
+	}
+}
